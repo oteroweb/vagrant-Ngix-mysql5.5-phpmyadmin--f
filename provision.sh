@@ -20,7 +20,7 @@ sudo cat >> /etc/nginx/sites-available/default <<'EOF'
 server {
   listen   80;
 
-  root /usr/share/nginx/html;
+  root home/vagrant/code;
   index index.php index.html index.htm;
 
   # Make site accessible from http://localhost/
@@ -91,13 +91,13 @@ server {
 }
 EOF
 
-sudo touch /usr/share/nginx/html/info.php
-sudo cat >> /usr/share/nginx/html/info.php <<'EOF'
+sudo touch home/vagrant/code/info.php
+sudo cat >> home/vagrant/code/info.php <<'EOF'
 <?php phpinfo(); ?>
 EOF
 
 sudo aptitude install -q -y -f phpmyadmin
 
 sudo service nginx restart
-
+sudo cat /home/vagrant/code/import.sql | mysql -u root -padmin
 sudo service php5-fpm restart
