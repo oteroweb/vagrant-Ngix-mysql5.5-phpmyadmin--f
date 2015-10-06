@@ -43,7 +43,7 @@ server {
   #
   error_page 500 502 503 504 /50x.html;
   location = /50x.html {
-    root /usr/share/nginx/html;
+    root /home/vagrant/code;
   }
 
   # pass the PHP scripts to FastCGI server listening on /tmp/php5-fpm.sock
