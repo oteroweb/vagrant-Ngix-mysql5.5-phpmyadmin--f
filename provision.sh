@@ -88,7 +88,11 @@ sudo touch /home/vagrant/code/html/info.php
 sudo cat >> /home/vagrant/code/html/info.php <<'EOF'
 <?php phpinfo(); ?>
 EOF
-
+sudo debconf-set-selections <<< 'phpmyadmin phpmyadmin/dbconfig-install boolean true'
+sudo debconf-set-selections <<< 'phpmyadmin phpmyadmin/app-password-confirm password admin'
+sudo debconf-set-selections <<< 'phpmyadmin phpmyadmin/mysql/admin-pass password admin'
+sudo debconf-set-selections <<< 'phpmyadmin phpmyadmin/mysql/app-pass password admin'
+sudo debconf-set-selections <<< 'phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2'﻿
 sudo aptitude install -q -y -f phpmyadmin
 
 sudo service nginx restart
