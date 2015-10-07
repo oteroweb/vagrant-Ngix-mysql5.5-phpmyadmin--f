@@ -44,9 +44,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--natdnshostresolver1",  "on"]
     v.customize ["modifyvm", :id, "--natdnsproxy1",         "on"]
   end
-
+  #config.ssh.insert_key = false
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
   # install some base packages
-  config.vm.provision :shell, path: "provision.sh"
+ config.vm.provision :shell, path: "provision.sh"
 end
